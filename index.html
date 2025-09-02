@@ -1,171 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Cashback Claim</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Part Time Job Recommendation</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
     body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f8f8;
       margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #ff7a00; /* Orange background */
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+      padding: 0;
     }
-
     .container {
-      width: 100%;
-      max-width: 420px;
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      padding-bottom: 20px;
+    }
+    .header {
+      background-color: #062a55;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 15px;
+      border-style: solid;
+      border-color: #062a55 transparent transparent transparent;
+    }
+    .header h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .header p {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+    .content {
+      padding: 20px;
       text-align: center;
     }
-
-    .logo {
-      margin-bottom: 25px;
-    }
-
-    .logo img {
-      width: 160px;
-    }
-
-    h2 {
-      margin-bottom: 25px;
-      font-size: 24px;
-      font-weight: 600;
-    }
-
-    label {
-      display: block;
+    .terms h3 {
       text-align: left;
-      margin: 12px 29px 6px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #fff;
-    }
-
-    input[type="text"] {
-      width: 80%;
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      font-size: 15px;
-      outline: none;
-      color: #000;
-      background: #fff;
-      margin-bottom: 20px;
-    }
-
-    button {
-      display: inline-block;   /* ✅ keeps button inline */
-      padding: 14px 40px;      /* ✅ smaller button */
-      background: #fff;
-      color: #ff7a00;
-      border: none;
-      border-radius: 30px;
+      margin-top: 20px;
       font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
+      color: #000;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+    .terms ul {
+      text-align: left;
+      list-style: none;
+      padding: 0;
       margin-top: 10px;
-      transition: all 0.2s;
     }
-
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    button:active {
-      transform: scale(0.96);
-    }
-
-    .result {
-      margin-top: 18px;
-      padding: 12px;
-      border-radius: 10px;
+    .terms li {
+      margin-bottom: 10px;
       font-size: 14px;
-      display: none;
-      word-wrap: break-word;
+      display: flex;
+      align-items: center;
     }
-
-    .success {
-      background: rgba(22,163,74,0.85);
-      color: #fff;
+    .terms li img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
     }
-
-    .error {
-      background: rgba(220,38,38,0.85);
-      color: #fff;
+    .whatsapp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 25px;
+      margin-top: 20px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
     }
-    @media (max-width: 500px) {
-  .input-container input {
-    width: 60%; /* adjust as needed, e.g. 70% or 90% */
-  }
-
-  #claimbtn {
-    width: 60%; /* optional: shrink button too */
-  }
-}
-
+    .whatsapp-button img {
+      width: 20px;
+      height: 20px;
+    }
+    .feedback-section {
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    .feedback-section h3 {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+    .feedback {
+      background-color: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    .feedback img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+    }
+    .feedback-text {
+      flex: 1;
+    }
+    .feedback-text .name {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    .feedback-text p {
+      font-size: 14px;
+      color: #444;
+      margin: 0;
+    }
+    @media (max-width: 420px) {
+      .container {
+        margin: 10px;
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <div class="logo">
-      <!-- You can replace with your own logo -->
-      <img src="635c90d2aa1257d38e3429f09f1a1693.png" alt="Logo">
+    <div class="header">
+      <h2>RECOMMENDATION</h2>
+      <p>PART TIME JOB</p>
     </div>
 
-    <h2>BournVita x Paytm</h2>
+    <div class="content">
+      <p>For those of you who want to make extra money from home, come join!!</p>
 
-    <form onsubmit="event.preventDefault(); claim();">
-      <label for="vpa">UPI ID</label>
-      <input type="text" id="vpa" placeholder="Enter UPI ID">
-      <br>
-      <button type="submit">Claim</button>
-    </form>
+      <div class="terms">
+        <h3>Terms and Conditions</h3>
+        <ul>
+          <li><img src="https://img.icons8.com/color/48/000000/smartphone-tablet.png" alt="" />You only need 1 cellphone and laptop.</li>
+          <li><img src="https://img.icons8.com/color/48/000000/wallet.png" alt="" />Requires only a small initial capital.</li>
+          <li><img src="https://img.icons8.com/color/48/000000/user.png" alt="" />Must be &gt;25 years old.</li>
+          <li><img src="https://img.icons8.com/color/48/000000/internet.png" alt="" />Get extra income from the internet.</li>
+          <li><img src="https://img.icons8.com/color/48/000000/money.png" alt="" />Starting from Rs. 8,000 to Rs. 30,000/Day.</li>
+        </ul>
+      </div>
 
-    <div id="result" class="result"></div>
+      <a id="whatsappBtn" href="#" class="whatsapp-button">
+        <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp--v1.png" alt="WhatsApp Icon" />
+        WhatsApp
+      </a>
+    </div>
+
+    <div class="feedback-section">
+      <h3>Feedback</h3>
+
+      <div class="feedback">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah" />
+        <div class="feedback-text">
+          <div class="name">Sarah, 35</div>
+          <p>"This platform helped me and my family get out of poverty and improve our lives."</p>
+        </div>
+      </div>
+
+      <div class="feedback">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Alya" />
+        <div class="feedback-text">
+          <div class="name">Alya, 28</div>
+          <p>"I have made a lot of money. Enter this platform now and start achieving your dreams."</p>
+        </div>
+      </div>
+
+      <div class="feedback">
+        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Budi" />
+        <div class="feedback-text">
+          <div class="name">Budi, 40</div>
+          <p>"With this platform, you can make money in a great way. Many people have earned already."</p>
+        </div>
+      </div>
+
+      <div class="feedback">
+        <img src="https://randomuser.me/api/portraits/women/75.jpg" alt="Dewi" />
+        <div class="feedback-text">
+          <div class="name">Dewi, 32</div>
+          <p>"Now I get a full salary plus side income! Reliable platform."</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <script>
-    function claim() {
-      const vpa = document.getElementById("vpa").value.trim();
-      const resultBox = document.getElementById("result");
+    const whatsappNumbers = [
+      "919927674795",
+      "919988076608",
+      "918874043924",
+      "919963691161",
+      "919639924481",
+      "919733178191",
+      "919579222072",
+      "919365986025",
+      "917307685745",
+      "919116933809"
+    ];
 
-      if (!vpa) {
-        resultBox.style.display = "block";
-        resultBox.className = "result error";
-        resultBox.innerText = "⚠️ Please enter UPI ID";
-        return;
-      }
+    const ladiesNames = [
+      "Priya", "Neha", "Anjali", "Sonia", "Kiran",
+      "Divya", "Ritika", "Pooja", "Meena", "Ayesha",
+      "Shruti", "Nisha", "Rani", "Preeti", "Komal"
+    ];
 
-      resultBox.style.display = "block";
-      resultBox.className = "result";
-      resultBox.innerText = "⏳ Processing...";
+    const whatsappBtn = document.getElementById("whatsappBtn");
 
-      fetch("process.php?vpa=" + encodeURIComponent(vpa))
-        .then(res => res.json())
-        .then(data => {
-          resultBox.style.display = "block";
-          if (data.status === "success") {
-            resultBox.className = "result success";
-            resultBox.innerText = "✅ " + data.message;
-            document.getElementById("vpa").value = "";
-            setTimeout(() => location.href = "https://telegram.dog/+ym6xDRtOEgVhZjNl", 3000);
-          } else {
-            resultBox.className = "result error";
-            resultBox.innerText = "❌ " + data.message;
-          }
-        })
-        .catch(() => {
-          resultBox.style.display = "block";
-          resultBox.className = "result error";
-          resultBox.innerText = "❌ Request failed!";
-        });
-    }
+    whatsappBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+
+      const randomNumber = whatsappNumbers[Math.floor(Math.random() * whatsappNumbers.length)];
+      const randomName = ladiesNames[Math.floor(Math.random() * ladiesNames.length)];
+
+      const message = encodeURIComponent(`Hello, my name is ${randomName}. I'm interested in the part-time job. Please share more details.`);
+      const whatsappUrl = `https://wa.me/${randomNumber}?text=${message}`;
+
+      window.open(whatsappUrl, "_blank");
+    });
   </script>
+
 </body>
 </html>
