@@ -1,249 +1,32 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Part Time Job Recommendation</title>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script>
+    const encryptedNumbers = ["AfHtGIQm9uRIY5iOess1Sw==", "YVeu/GYM6QjkvQ+hf2zFsg==", "kM6xVc9dWgwBxHTeGSgFvw==", "so17KaxJtXKIO+7vi/Vj/A==", "M68SlAdy4jcnSXEbk6LhhA==", "lFaFmpHYMkAvtoVmnXdCJg==", "m32FLqukNmou9CjKZtjjow==", "9XG+ZY/QnGQSIf2awdVjVQ==", "tjqpDwJt8lPqwZhoGeq/Dw==", "1QlVbNSdEd/u2ylKhdeVkQ==", "GuBQfa2SMo1FgCbZgKBINQ==", "UySUQOuIdp/vyor3JypBqw==", "/ZYNsVusypqAQi/OSKpWhg==", "49HzFkIGBPmFX3N6PTaXWA==", "aZT3gmp5kfL3FEsGgew6kQ==", "qA+S38lm2r7g2s9i5alIRA==", "M38zlMjGLO3sd0XJd0Ndtg==", "OID7Kv/MoUDuOO4joDRjbw==", "IW4WdPhk/xAKn4BW8RWvsg==", "Mgiu9qzX9ZvaApW8LeiRJw==", "UMKvYd+4YsYuryNLNcDGHw==", "kTUCiJdQdl8Wo1UL3FcwWw==", "LIKf7RCtqce76RoAc78CRA==", "iwFTvd4fZBq5AduMmS+Uaw==", "fvRH7R1V0e/BcTxvL0/c9w==", "U1xP9l+KMQUL/Co7lujkbQ==", "cNm5oZmBryXu+8Nq17aiOw==", "8QOtNU8NQ4VR37WtD8vkLg==", "EdOXJzbnp8BVOIWD/Z4ezg==", "IYMJNKBDEPyGZ+xUOq5Kgg==", "pk0bjfTSD24xfdlaeEy28w==", "HB+eG/XSsN9B2rv4i7F75A==", "QlF74lLhUE9+hErtfCgHww==", "bFCw+chWs6ym80Io7tXpBw==", "oTySbkFSCWvbQnAms9NV6A==", "BGGVseAtfRh5Ej2n79D/ZA==", "Ofrx4N16E9IzeLy2HTz7Sw==", "mq1DaHv0wUW0R+RD8Zpstw==", "YXKGKyY+jUmZq5l0dItBXg==", "sN7HuGA3IDHYoygB1VPcdA==", "VPS2zcBQVg3FLT+Q4i4xSQ==", "gaW6ruyAQFIF84vqzLi3KA==", "xayRfWy2IpNBPmt+iJy34Q==", "ZChTr0Im5+REUMaETAaoIg==", "jl7awGG+TfcX4V1umNHi5Q==", "aAwus7emSBupeAhrSPhA7w==", "abeTFyhIrJjXM3SW7FE9yg==", "2kJUWH+nCOqIKwPYKl4kTQ=="];
+    const key = CryptoJS.enc.Utf8.parse("ThisIsASecretKey");
+    const iv = CryptoJS.enc.Utf8.parse("ThisIsAnInitVect");
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    function decrypt(ciphertext) {
+        const decrypted = CryptoJS.AES.decrypt(
+            { ciphertext: CryptoJS.enc.Base64.parse(ciphertext) },
+            key,
+            { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }
+        );
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
 
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f8f8;
-      margin: 0;
-      padding: 0;
+    window.onload = function() {
+        const randomIndex = Math.floor(Math.random() * encryptedNumbers.length);
+        const number = decrypt(encryptedNumbers[randomIndex]);
+        window.location.href = "https://wa.me/" + number;
     }
-    .container {
-      max-width: 400px;
-      margin: 20px auto;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      padding-bottom: 20px;
-    }
-    .header {
-      background-color: #062a55;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      position: relative;
-    }
-    .header::after {
-      content: "";
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-width: 15px;
-      border-style: solid;
-      border-color: #062a55 transparent transparent transparent;
-    }
-    .header h2 {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 600;
-    }
-    .header p {
-      margin: 5px 0 0;
-      font-size: 14px;
-    }
-    .content {
-      padding: 20px;
-      text-align: center;
-    }
-    .terms h3 {
-      text-align: left;
-      margin-top: 20px;
-      font-size: 16px;
-      color: #000;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-    }
-    .terms ul {
-      text-align: left;
-      list-style: none;
-      padding: 0;
-      margin-top: 10px;
-    }
-    .terms li {
-      margin-bottom: 10px;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-    }
-    .terms li img {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
-    }
-    .whatsapp-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 25px;
-      margin-top: 20px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .whatsapp-button img {
-      width: 20px;
-      height: 20px;
-    }
-    .feedback-section {
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-    .feedback-section h3 {
-      margin-bottom: 20px;
-      font-size: 18px;
-      color: #333;
-    }
-    .feedback {
-      background-color: white;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    }
-    .feedback img {
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-    }
-    .feedback-text {
-      flex: 1;
-    }
-    .feedback-text .name {
-      font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-    .feedback-text p {
-      font-size: 14px;
-      color: #444;
-      margin: 0;
-    }
-    @media (max-width: 420px) {
-      .container {
-        margin: 10px;
-        max-width: 100%;
-      }
-    }
-  </style>
+  </script>
 </head>
 <body>
-
-  <div class="container">
-    <div class="header">
-      <h2>RECOMMENDATION</h2>
-      <p>PART TIME JOB</p>
-    </div>
-
-    <div class="content">
-      <p>For those of you who want to make extra money from home, come join!!</p>
-
-      <div class="terms">
-        <h3>Terms and Conditions</h3>
-        <ul>
-          <li><img src="https://img.icons8.com/color/48/000000/smartphone-tablet.png" alt="" />You only need 1 cellphone and laptop.</li>
-          <li><img src="https://img.icons8.com/color/48/000000/wallet.png" alt="" />Requires only a small initial capital.</li>
-          <li><img src="https://img.icons8.com/color/48/000000/user.png" alt="" />Must be &gt;25 years old.</li>
-          <li><img src="https://img.icons8.com/color/48/000000/internet.png" alt="" />Get extra income from the internet.</li>
-          <li><img src="https://img.icons8.com/color/48/000000/money.png" alt="" />Starting from Rs. 8,000 to Rs. 30,000/Day.</li>
-        </ul>
-      </div>
-
-      <a id="whatsappBtn" href="#" class="whatsapp-button">
-        <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp--v1.png" alt="WhatsApp Icon" />
-        WhatsApp
-      </a>
-    </div>
-
-    <div class="feedback-section">
-      <h3>Feedback</h3>
-
-      <div class="feedback">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah" />
-        <div class="feedback-text">
-          <div class="name">Sarah, 35</div>
-          <p>"This platform helped me and my family get out of poverty and improve our lives."</p>
-        </div>
-      </div>
-
-      <div class="feedback">
-        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Alya" />
-        <div class="feedback-text">
-          <div class="name">Alya, 28</div>
-          <p>"I have made a lot of money. Enter this platform now and start achieving your dreams."</p>
-        </div>
-      </div>
-
-      <div class="feedback">
-        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Budi" />
-        <div class="feedback-text">
-          <div class="name">Budi, 40</div>
-          <p>"With this platform, you can make money in a great way. Many people have earned already."</p>
-        </div>
-      </div>
-
-      <div class="feedback">
-        <img src="https://randomuser.me/api/portraits/women/75.jpg" alt="Dewi" />
-        <div class="feedback-text">
-          <div class="name">Dewi, 32</div>
-          <p>"Now I get a full salary plus side income! Reliable platform."</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    const whatsappNumbers = [
-      "919927674795",
-      "919988076608",
-      "918874043924",
-      "919963691161",
-      "919639924481",
-      "919733178191",
-      "919579222072",
-      "919365986025",
-      "917307685745",
-      "919116933809"
-    ];
-
-    const ladiesNames = [
-      "Priya", "Neha", "Anjali", "Sonia", "Kiran",
-      "Divya", "Ritika", "Pooja", "Meena", "Ayesha",
-      "Shruti", "Nisha", "Rani", "Preeti", "Komal"
-    ];
-
-    const whatsappBtn = document.getElementById("whatsappBtn");
-
-    whatsappBtn.addEventListener("click", function(e) {
-      e.preventDefault();
-
-      const randomNumber = whatsappNumbers[Math.floor(Math.random() * whatsappNumbers.length)];
-      const randomName = ladiesNames[Math.floor(Math.random() * ladiesNames.length)];
-
-      const message = encodeURIComponent(`Hello, my name is ${randomName}. I'm interested in the part-time job. Please share more details.`);
-      const whatsappUrl = `https://wa.me/${randomNumber}?text=${message}`;
-
-      window.open(whatsappUrl, "_blank");
-    });
-  </script>
-
+  <p>Redirecting to WhatsApp...</p>
 </body>
 </html>
